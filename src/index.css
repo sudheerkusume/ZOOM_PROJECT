@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+
+  --color-brand-indigo: #f97316;
+  --color-brand-violet: #c026d3;
+  --color-brand-slate: #0f172a;
+  --color-brand-emerald: #10B981;
+
+  /* Premium Shadow System */
+  --shadow-premium: 0 10px 30px -10px rgba(0, 0, 0, 0.08), 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+  --shadow-glow: 0 0 40px -10px rgba(249, 115, 22, 0.28);
+  --shadow-island: 0 20px 60px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.04);
+
+  /* Limited High-End Animations */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-fade-up: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-[#fff8f4] text-brand-slate antialiased font-sans selection:bg-brand-indigo/20;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-10 py-4 bg-brand-indigo text-white rounded-2xl font-bold transition-all duration-300 hover:bg-brand-violet hover:shadow-xl hover:shadow-brand-indigo/20 active:scale-95 flex items-center justify-center gap-2;
+  }
+
+  .btn-secondary {
+    @apply px-10 py-4 bg-white text-brand-slate border-2 border-slate-100 rounded-2xl font-bold transition-all duration-300 hover:border-brand-indigo hover:text-brand-indigo flex items-center justify-center gap-2;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-6 lg:px-8;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-linear-to-r from-brand-indigo to-brand-violet;
+  }
+
+  .section-spacing {
+    @apply py-16 lg:py-24;
+  }
+
+  .section-muted {
+    @apply bg-linear-to-b from-[#fff8f4] to-[#fff3ec];
+  }
+
+  /* Selective Glassmorphism for Hero Only */
+  .glass-nav {
+    @apply bg-[#fff8f4]/90 backdrop-blur-xl border-b border-slate-100 shadow-sm transition-all duration-300;
+  }
+
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-md border border-white/40 shadow-premium;
+  }
+
+  .announcement-bar {
+    @apply bg-brand-indigo text-white overflow-hidden py-3 text-[11px] font-bold uppercase tracking-[0.2em] transition-all duration-500 relative z-50;
+  }
+
+  .announcement-track {
+    @apply flex whitespace-nowrap animate-[marquee_40s_linear_infinite] w-max select-none;
+  }
+
+  .announcement-hidden {
+    @apply h-0 py-0 opacity-0 pointer-events-none;
+  }
+
+  /* Selective Glassmorphism for Hero Only */
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-md border border-white/40 shadow-premium;
+  }
+}
