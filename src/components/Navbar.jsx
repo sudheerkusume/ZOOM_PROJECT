@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Menu, X, ChevronDown, ArrowRight, ChevronRight, Search } from 'lucide-react';
-import logo from "../assets/logo1.png"
+import logo from "../assets/Mainlogo.png"
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -141,7 +141,7 @@ const Navbar = () => {
         <div className="container-custom flex items-center justify-between">
           {/* Logo */}
           <NavLink to="/" className="flex items-center group cursor-pointer">
-            <img src={logo} className="h-10 md:h-12 w-auto object-contain transition-transform group-hover:scale-105" alt="ZOO Logo" />
+            <img src={logo} className="h-10 md:h-18 md:-ml-4 -my-3 md:-my-4 w-auto object-contain transition-transform group-hover:scale-105" alt="ZOO Logo" />
           </NavLink>
 
           {/* Desktop Nav */}
@@ -156,11 +156,10 @@ const Navbar = () => {
                   <ChevronDown size={14} className="group-hover:rotate-180 transition-transform opacity-50" />
                 </NavLink>
                 {/* Dropdown Mega-Menu */}
-                <div className={`absolute top-full w-[480px] bg-white shadow-2xl rounded-3xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 p-7 border border-slate-100 mt-2 z-50 ${
-                  index <= 2 ? 'left-0' : 
-                  index >= navLinks.length - 2 ? 'right-0' : 
-                  'left-1/2 -translate-x-1/2'
-                }`}>
+                <div className={`absolute top-full w-[480px] bg-white shadow-2xl rounded-3xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 p-7 border border-slate-100 mt-2 z-50 ${index <= 2 ? 'left-0' :
+                  index >= navLinks.length - 2 ? 'right-0' :
+                    'left-1/2 -translate-x-1/2'
+                  }`}>
                   <div className="grid grid-cols-2 gap-x-6 gap-y-3">
                     {link.subLinks.map((sub) => (
                       <NavLink
@@ -199,7 +198,7 @@ const Navbar = () => {
         <div className={`fixed inset-0 bg-brand-slate z-[200] transition-all duration-700 flex flex-col ${isMobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'}`}>
           <div className="p-6 md:p-8 flex justify-between items-center border-b border-white/10">
             <NavLink to="/" onClick={() => setIsMobileMenuOpen(false)}>
-              <img src={logo} className="h-10 w-auto object-contain brightness-0 invert" alt="ZOO Logo" />
+              <img src={logo} className="h-16 -my-3 w-auto object-contain brightness-0 invert" alt="ZOO Logo" />
             </NavLink>
             <button onClick={() => { setIsMobileMenuOpen(false); setActiveAccordion(null); }} className="p-3 text-white bg-white/10 rounded-2xl hover:bg-white/20 transition-colors">
               <X size={24} />
