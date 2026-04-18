@@ -145,8 +145,8 @@ const Navbar = () => {
           </NavLink>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-10">
-            {navLinks.map((link) => (
+          <div className="hidden lg:flex items-center gap-8 xl:gap-10">
+            {navLinks.map((link, index) => (
               <div key={link.name} className="group relative">
                 <NavLink
                   to={link.href}
@@ -156,7 +156,11 @@ const Navbar = () => {
                   <ChevronDown size={14} className="group-hover:rotate-180 transition-transform opacity-50" />
                 </NavLink>
                 {/* Dropdown Mega-Menu */}
-                <div className="absolute top-full left-1/2 -translate-x-1/2 w-[480px] bg-white shadow-2xl rounded-3xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 p-7 border border-slate-100 mt-2 z-50">
+                <div className={`absolute top-full w-[480px] bg-white shadow-2xl rounded-3xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 p-7 border border-slate-100 mt-2 z-50 ${
+                  index <= 2 ? 'left-0' : 
+                  index >= navLinks.length - 2 ? 'right-0' : 
+                  'left-1/2 -translate-x-1/2'
+                }`}>
                   <div className="grid grid-cols-2 gap-x-6 gap-y-3">
                     {link.subLinks.map((sub) => (
                       <NavLink
