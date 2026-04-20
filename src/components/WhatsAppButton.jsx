@@ -16,7 +16,7 @@ const WhatsAppIcon = ({ className }) => (
 const WhatsAppButton = () => {
   const [showTooltip, setShowTooltip] = useState(true);
 
-  const phoneNumber = "919000000000"; // Placeholder
+  const phoneNumber = "9177314545";
   const message = "Hi ZOO Team, I'd like to know more about your registration and compliance services.";
   
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
