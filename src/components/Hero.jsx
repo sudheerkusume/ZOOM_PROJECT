@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Search, ArrowRight, Star, ShieldCheck, Clock, ChevronRight, Zap } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { navLinks } from "../data/navLinks";
 
 const services = [
   { name: "Business Registration", tag: "Most Popular", time: "3-5 days", color: "#f97316", emoji: "🏢", path: "/startup/private-limited" },
@@ -9,7 +10,7 @@ const services = [
   { name: "Income Tax Filing", tag: "Popular", time: "1-3 days", color: "#9333ea", emoji: "🧾", path: "/incometax/e-filing" },
 ];
 
-import { navLinks } from "../data/navLinks";
+
 
 // Create a flat search index from navLinks
 const searchIndex = navLinks.flatMap(category => [

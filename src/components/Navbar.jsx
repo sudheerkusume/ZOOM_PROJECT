@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Menu, X, ChevronDown, ArrowRight, ChevronRight, Search } from 'lucide-react';
+import { navLinks } from '../data/navLinks';
 import logo from "../assets/Mainlogo.png"
 
 const Navbar = () => {
@@ -16,7 +17,7 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-import { navLinks } from '../data/navLinks';
+
 
   return (
     <>
