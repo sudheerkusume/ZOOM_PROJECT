@@ -9,6 +9,19 @@ const services = [
   { name: "Income Tax Filing", tag: "Popular", time: "1-3 days", color: "#9333ea", emoji: "🧾", path: "/incometax/e-filing" },
 ];
 
+import { navLinks } from "../data/navLinks";
+
+// Create a flat search index from navLinks
+const searchIndex = navLinks.flatMap(category => [
+  // Include category itself (optional, but good for parent terms)
+  // { name: category.name, path: category.href, category: 'Main' },
+  ...category.subLinks.map(sub => ({
+    name: sub.name,
+    path: sub.href,
+    category: category.name
+  }))
+]);
+
 const words = ["Business", "Startup", "Company", "Brand"];
 
 export default function Hero() {
@@ -17,6 +30,9 @@ export default function Hero() {
   const [displayed, setDisplayed] = useState("Business");
   const [fading, setFading] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  
   const suggestions = ["GST", "PVT LTD", "Trademark", "LLP"];
   const navigate = useNavigate();
 
@@ -35,15 +51,39 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, []);
 
+  // Real-time search logic
+  useEffect(() => {
+    if (searchQuery.trim().length > 1) {
+      const filtered = searchIndex.filter(item => 
+        item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.category.toLowerCase().includes(searchQuery.toLowerCase())
+      ).slice(0, 8); // Limit to 8 results
+      setSearchResults(filtered);
+      setIsDropdownOpen(true);
+    } else {
+      setSearchResults([]);
+      setIsDropdownOpen(false);
+    }
+  }, [searchQuery]);
+
+  // Click-away listener
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (!event.target.closest(".search-container")) {
+        setIsDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    const q = searchQuery.trim().toLowerCase();
-    if (!q) return;
-
-    const idx = services.findIndex(
-      (s) => s.name.toLowerCase().includes(q) || s.tag.toLowerCase().includes(q)
-    );
-    if (idx !== -1) setActiveService(idx);
+    if (searchResults.length > 0) {
+      navigate(searchResults[0].path);
+      setIsDropdownOpen(false);
+      setSearchQuery("");
+    }
   };
 
   return (
@@ -83,29 +123,69 @@ export default function Hero() {
             </p>
 
             {/* Premium Search Bar */}
-            <form
-              onSubmit={handleSearchSubmit}
-              className="relative group mb-8 md:mb-10 w-full"
-              role="search"
-            >
-              <div className="absolute inset-y-0 left-0 pl-4 md:pl-6 flex items-center pointer-events-none">
-                <Search className="text-slate-400 group-focus-within:text-brand-indigo transition-colors hidden sm:block" size={20} />
-              </div>
-              <input
-                type="text"
-                placeholder="Search services (e.g. GST)"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-4 sm:pl-14 pr-32 md:pr-40 py-4 md:py-5 bg-white border border-slate-200 rounded-[1rem] md:rounded-2xl shadow-sm focus:ring-4 focus:ring-brand-indigo/10 focus:border-brand-indigo outline-none transition-all text-sm md:text-base font-semibold placeholder:text-slate-400"
-              />
-              <button
-                type="submit"
-                className="absolute right-1.5 top-1.5 bottom-1.5 bg-brand-indigo text-white px-5 md:px-8 rounded-[0.85rem] md:rounded-xl font-bold flex items-center gap-2 hover:bg-brand-violet transition-colors text-xs md:text-sm shadow-md"
+            <div className="relative group mb-8 md:mb-10 w-full z-50 search-container">
+              <form
+                onSubmit={handleSearchSubmit}
+                role="search"
+                className="relative"
               >
-                <span className="hidden sm:inline">Search</span>
-                <ArrowRight size={16} />
-              </button>
-            </form>
+                <div className="absolute inset-y-0 left-0 pl-4 md:pl-6 flex items-center pointer-events-none">
+                  <Search className="text-slate-400 group-focus-within:text-brand-indigo transition-colors hidden sm:block" size={20} />
+                </div>
+                <input
+                  type="text"
+                  placeholder="Search services (e.g. GST)"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onFocus={() => searchQuery.length > 1 && setIsDropdownOpen(true)}
+                  className="w-full pl-4 sm:pl-14 pr-32 md:pr-40 py-4 md:py-5 bg-white border border-slate-200 rounded-[1rem] md:rounded-2xl shadow-sm focus:ring-4 focus:ring-brand-indigo/10 focus:border-brand-indigo outline-none transition-all text-sm md:text-base font-semibold placeholder:text-slate-400"
+                />
+                <button
+                  type="submit"
+                  className="absolute right-1.5 top-1.5 bottom-1.5 bg-brand-indigo text-white px-5 md:px-8 rounded-[0.85rem] md:rounded-xl font-bold flex items-center gap-2 hover:bg-brand-violet transition-colors text-xs md:text-sm shadow-md"
+                >
+                  <span className="hidden sm:inline">Search</span>
+                  <ArrowRight size={16} />
+                </button>
+              </form>
+
+              {/* Real-time Search Dropdown */}
+              {isDropdownOpen && searchResults.length > 0 && (
+                <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+                  <div className="p-2">
+                    {searchResults.map((result, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => {
+                          navigate(result.path);
+                          setIsDropdownOpen(false);
+                          setSearchQuery("");
+                        }}
+                        className="w-full flex items-center justify-between p-3.5 hover:bg-slate-50 transition-colors text-left rounded-xl group"
+                      >
+                        <div className="flex flex-col">
+                          <span className="text-sm md:text-base font-bold text-brand-slate group-hover:text-brand-indigo transition-colors">{result.name}</span>
+                          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-0.5">{result.category}</span>
+                        </div>
+                        <ChevronRight size={16} className="text-slate-300 group-hover:text-brand-indigo group-hover:translate-x-1 transition-all" />
+                      </button>
+                    ))}
+                  </div>
+                  <div className="bg-slate-50 p-3 border-t border-slate-100 text-center">
+                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                      Press <span className="text-brand-indigo">Enter</span> to pick the first result
+                    </p>
+                  </div>
+                </div>
+              )}
+              
+              {/* No results state */}
+              {isDropdownOpen && searchResults.length === 0 && searchQuery.length > 1 && (
+                <div className="absolute top-full left-0 right-0 mt-2 bg-white p-6 rounded-2xl shadow-2xl border border-slate-100 text-center">
+                  <p className="text-slate-500 font-medium">No services found for "{searchQuery}"</p>
+                </div>
+              )}
+            </div>
 
             {/* Quick Suggestions */}
             <div className="flex flex-wrap gap-2 mb-8 md:mb-10">
