@@ -1645,5 +1645,102 @@ export const servicesData = {
       { name: "Indian Subsidiary", slug: "/startup/indian-subsidiary" },
       { name: "Trademark Registration", slug: "/trademark/registration" }
     ]
+  },
+  "private-limited": {
+    seo: {
+      title: "Private Limited Company Registration in India | ZOO Filings",
+      description: "Register your Private Limited Company in India with expert assistance. Get name approval, MOA & AOA, PAN, TAN, and complete compliance support."
+    },
+    hero: {
+      title: "Private Limited Company Registration in India",
+      description: "Register your Private Limited Company in India with expert assistance. Get name approval, MOA & AOA drafting, PAN & TAN registration, GST registration, and complete compliance support to start your business legally."
+    },
+    whatsappPackageName: "Private Limited Company",
+    inclusions: [
+      { title: "MCA Name Approval Assistance", icon: "CheckCircle2" },
+      { title: "Company Incorporation (Form SPICe+)", icon: "FileText" },
+      { title: "MOA & AOA Drafting", icon: "ShieldCheck" },
+      { title: "PAN & TAN Registration", icon: "Activity" }
+    ],
+    requiredDocuments: [
+      "PAN Card (Mandatory for Indian Directors)",
+      "Passport (Mandatory for Foreign Directors/Shareholders)",
+      "Aadhaar Card (Mandatory for Indian Directors)",
+      "Passport Size Photographs of Directors",
+      "Recent Utility Bill of Business Place (Electricity/Water/Gas)"
+    ],
+    features: [
+      {
+        title: "Separate Legal Entity",
+        description: "A private limited company has its own legal identity, distinct from its shareholders and directors, allowing it to own property and incur debts."
+      },
+      {
+        title: "Limited Liability Protection",
+        description: "The financial liability of shareholders is limited only to the amount of capital they have contributed, protecting personal assets from business debts."
+      },
+      {
+        title: "Investor Ready",
+        description: "Ideal for startups looking to raise venture capital or secure bank loans, as the structure is preferred by investors and financial institutions."
+      },
+      {
+        title: "Perpetual Succession",
+        description: "The company continues to exist by law regardless of changes in ownership, directors, or the death of any shareholder."
+      }
+    ],
+    pricing: [
+      {
+        name: "Private Limited Company",
+        description: "Register Your Company in Just 7–10 Days – Online & Hassle-Free! Fully managed incorporation with complete documentation support.",
+        price: "₹2,899",
+        subtitle: "+ GST | Govt. fee extra",
+        features: [
+          "Unlimited Name Approval Attempts",
+          "Company Incorporation Filing",
+          "MOA & AOA Drafting",
+          "3 DINs for Directors",
+          "Support for Unlimited Shareholders",
+          "Government fees borne by client"
+        ],
+        isPopular: true
+      },
+      {
+        name: "Incorporation and Compliance",
+        description: "Register your company in just 7–10 days with complete incorporation, compliance & accounting support.",
+        price: "₹19,899",
+        subtitle: "+ GST | Govt. fee extra",
+        features: [
+          "Complete Incorporation Package",
+          "Unlimited Name Approval Attempts",
+          "MOA & AOA Drafting",
+          "3 DINs for Directors",
+          "Accounting & Compliance Support",
+          "Government fees borne by client"
+        ],
+        isPopular: false
+      }
+    ],
+    faqs: [
+      {
+        question: "How many directors are required for a Private Limited Company?",
+        answer: "A minimum of two directors are required to incorporate a Private Limited Company. At least one director must be a resident of India."
+      },
+      {
+        question: "Can one person own all the shares in a Private Limited Company?",
+        answer: "No, a Private Limited Company must have at least two shareholders. If you want to be the sole owner, you should consider a One Person Company (OPC)."
+      },
+      {
+        question: "Is audit mandatory for all Private Limited Companies?",
+        answer: "Yes, every Private Limited Company in India is required to get its accounts audited by a qualified Chartered Accountant every financial year, regardless of turnover."
+      },
+      {
+        question: "How long does it take to register a company in India?",
+        answer: "With all documents in order, the registration process typically takes 7 to 10 working days, depending on MCA approval speed."
+      }
+    ],
+    relatedServices: [
+      { name: "One Person Company", slug: "/startup/opc" },
+      { name: "Limited Liability Partnership", slug: "/startup/llp" },
+      { name: "GST Registration", slug: "/gst/gst_registration" }
+    ]
   }
 };

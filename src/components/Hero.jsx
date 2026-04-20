@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Search, ArrowRight, Star, ShieldCheck, Clock, ChevronRight, Zap } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const services = [
-  { name: "Business Registration", tag: "Most Popular", time: "3-5 days", color: "#f97316", emoji: "🏢" },
-  { name: "GST Compliance", tag: "Fast Track", time: "1-2 days", color: "#ec4899", emoji: "📄" },
-  { name: "MCA Compliance", tag: "Essential", time: "2-4 days", color: "#c026d3", emoji: "📘" },
-  { name: "Income Tax Filing", tag: "Popular", time: "1-3 days", color: "#9333ea", emoji: "🧾" },
+  { name: "Business Registration", tag: "Most Popular", time: "3-5 days", color: "#f97316", emoji: "🏢", path: "/startup/private-limited" },
+  { name: "GST Compliance", tag: "Fast Track", time: "1-2 days", color: "#ec4899", emoji: "📄", path: "/gst/gst_registration" },
+  { name: "MCA Compliance", tag: "Essential", time: "2-4 days", color: "#c026d3", emoji: "📘", path: "/mca/company" },
+  { name: "Income Tax Filing", tag: "Popular", time: "1-3 days", color: "#9333ea", emoji: "🧾", path: "/incometax/e-filing" },
 ];
 
 const words = ["Business", "Startup", "Company", "Brand"];
@@ -17,6 +18,7 @@ export default function Hero() {
   const [fading, setFading] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const suggestions = ["GST", "PVT LTD", "Trademark", "LLP"];
+  const navigate = useNavigate();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -179,7 +181,10 @@ export default function Hero() {
                         ? "bg-brand-indigo/[0.06] border-brand-indigo/25 shadow-sm"
                         : "border-transparent hover:bg-slate-50 hover:border-slate-200"
                     } focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-indigo/15`}
-                    onClick={() => setActiveService(i)}
+                    onClick={() => {
+                      setActiveService(i);
+                      navigate(s.path);
+                    }}
                   >
                     <div
                       className={`w-1md:w-1.5 self-stretch rounded-full transition-colors ${
@@ -214,12 +219,16 @@ export default function Hero() {
 
               <div className="p-2 md:p-3 mt-1 md:mt-2">
                 <div className="flex flex-col sm:grid sm:grid-cols-2 gap-2 md:gap-3 items-center">
-                  <button className="w-full py-3.5 md:py-4 bg-brand-indigo text-white rounded-xl md:rounded-2xl text-sm md:text-base font-bold flex items-center justify-center gap-2 hover:bg-brand-violet transition-all shadow-lg shadow-brand-indigo/20">
+                  <button 
+                    onClick={() => navigate(services[activeService].path)}
+                    className="w-full py-3.5 md:py-4 bg-brand-indigo text-white rounded-xl md:rounded-2xl text-sm md:text-base font-bold flex items-center justify-center gap-2 hover:bg-brand-violet transition-all shadow-lg shadow-brand-indigo/20"
+                  >
                     Register Now <ArrowRight size={16} />
                   </button>
 
                   <button
                     type="button"
+                    onClick={() => navigate('/contact')}
                     className="w-full items-center justify-center py-3.5 md:py-4 rounded-xl md:rounded-2xl border border-slate-200 bg-white text-brand-slate text-sm font-bold hover:bg-slate-50 transition-colors shadow-sm focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-indigo/10"
                   >
                     Talk to an expert
