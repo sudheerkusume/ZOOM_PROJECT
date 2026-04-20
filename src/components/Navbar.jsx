@@ -19,7 +19,7 @@ const Navbar = () => {
   const navLinks = [
     {
       name: 'Startup',
-      href: '/startup',
+      href: '/startup/proprietorship',
       subLinks: [
         { name: 'Proprietorship', href: '/startup/proprietorship' },
         { name: 'Partnership', href: '/startup/partnership' },
@@ -35,7 +35,7 @@ const Navbar = () => {
     },
     {
       name: 'Registrations',
-      href: '/registrations',
+      href: '/registrations/trade-license',
       subLinks: [
         { name: 'Trade License', href: '/registrations/trade-license' },
         { name: 'FSSAI Registration', href: '/registrations/fssai' },
@@ -46,7 +46,7 @@ const Navbar = () => {
     },
     {
       name: 'Trademark',
-      href: '/trademark',
+      href: '/trademark/registration',
       subLinks: [
         { name: 'Trademark Registration', href: '/trademark/registration' },
         { name: 'Trademark Certificate', href: '/trademark/certificate' }
@@ -54,7 +54,7 @@ const Navbar = () => {
     },
     {
       name: 'GST',
-      href: '/gst',
+      href: '/gst/gst_registration',
       subLinks: [
         { name: 'GST Registration', href: '/gst/gst_registration' },
         { name: 'GST Return Filing by Accountant', href: '/gst/rfba' },
@@ -70,7 +70,7 @@ const Navbar = () => {
     },
     {
       name: 'Income Tax',
-      href: '/incometax',
+      href: '/incometax/e-filing',
       subLinks: [
         { name: 'Income Tax E-Filing', href: '/incometax/e-filing' },
         { name: 'Business Tax Filing', href: '/incometax/business-tax-filing' },
@@ -86,7 +86,7 @@ const Navbar = () => {
     },
     {
       name: 'MCA',
-      href: '/mca',
+      href: '/mca/company',
       subLinks: [
         { name: 'Company Compliance', href: '/mca/company' },
         { name: 'LLP Compliance', href: '/mca/llp' },
@@ -114,7 +114,7 @@ const Navbar = () => {
     },
     {
       name: 'Compliance',
-      href: '/compliance',
+      href: '/compliance/business',
       subLinks: [
         { name: 'Business Plan', href: '/compliance/business' },
         { name: 'HR & Payroll', href: '/compliance/hr' },
@@ -123,7 +123,7 @@ const Navbar = () => {
     },
     {
       name: 'Global',
-      href: '/global',
+      href: '/global/uae',
       subLinks: [
         { name: 'UAE Company', href: '/global/uae' },
         { name: 'USA Company', href: '/global/usa' },
