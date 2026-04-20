@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
 import ServicePage from './pages/ServicePage';
+import ContactPage from './pages/ContactPage';
 
 function App() {
   return (
@@ -21,9 +22,10 @@ function App() {
 
         <Route path="/:category/:serviceSlug" element={<ServicePage />} />
         
-        {/* Placeholder for future routes */}
+        {/* Contact & Get Started routes */}
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/get-started" element={<ContactPage />} />
         <Route path="/about" element={<Home />} />
-        <Route path="/contact" element={<Home />} />
         
         {/* Catch all to home */}
         <Route path="*" element={<Navigate to="/" replace />} />

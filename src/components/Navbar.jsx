@@ -66,7 +66,7 @@ const Navbar = () => {
             {/* <button className="p-2 text-brand-slate/60 hover:text-brand-indigo transition-colors">
               <Search size={20} />
             </button> */}
-            <NavLink to="/get-started" className="btn-primary py-3 px-6 text-sm">
+            <NavLink to="/contact" className="btn-primary py-3 px-6 text-sm">
               Contact
               <ArrowRight size={14} />
             </NavLink>

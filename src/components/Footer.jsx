@@ -1,5 +1,5 @@
 import React from 'react';
-import { Send, Play, Camera, Mail, Phone, Briefcase } from 'lucide-react';
+import { Mail, Phone, Facebook, Instagram, Youtube, Linkedin } from 'lucide-react';
 import logo1 from '../assets/logo1.png';
 
 const Footer = () => {
@@ -9,6 +9,13 @@ const Footer = () => {
     "Usage": ["Terms & Conditions", "Privacy Policy", "Refund Policy", "Confidentiality", "Disclaimer", "Security"],
     "Compliance": ["GST Filing", "Income Tax Filing", "ROC Compliance", "Annual Filing", "TDS Filing", "Payroll Management"]
   };
+
+  const socials = [
+    { icon: Facebook, href: "#" },
+    { icon: Instagram, href: "#" },
+    { icon: Youtube, href: "#" },
+    { icon: Linkedin, href: "#" }
+  ];
 
   return (
     <footer className="pt-24 pb-12 bg-brand-slate text-white border-t border-white/5">
@@ -25,9 +32,9 @@ const Footer = () => {
               A modern compliance and registrations experience for founders. Simple steps, clear status updates, and expert support when you need it.
             </p>
             <div className="flex gap-4">
-              {[Send, Briefcase, Camera, Play].map((Icon, idx) => (
-                <a key={idx} href="#" className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-brand-indigo transition-all duration-300 group">
-                  <Icon size={20} className="text-slate-400 group-hover:text-white" />
+              {socials.map((social, idx) => (
+                <a key={idx} href={social.href} className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-brand-indigo transition-all duration-300 group">
+                  <social.icon size={20} className="text-slate-400 group-hover:text-white" />
                 </a>
               ))}
             </div>
@@ -52,11 +59,11 @@ const Footer = () => {
             <div className="flex flex-wrap justify-center md:justify-start gap-8 text-sm text-slate-400 font-medium">
               <div className="flex items-center gap-2 hover:text-brand-indigo transition-colors cursor-pointer">
                 <Mail size={16} className="text-brand-indigo" />
-                <span>support@zoo.com</span>
+                <span>support@zoofilings.com</span>
               </div>
               <div className="flex items-center gap-2 hover:text-brand-indigo transition-colors cursor-pointer">
                 <Phone size={16} className="text-brand-indigo" />
-                <span>+91 1800 123 4567</span>
+                <span>+91 7731 45 4545 / 7721 45 4545</span>
               </div>
             </div>
             <div className="text-center md:text-right">
