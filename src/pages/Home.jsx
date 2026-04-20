@@ -94,7 +94,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   const handleExpertClick = () => {
-    window.open("https://wa.me/9177509985?text=Hello,%20I'm%20looking%20for%20expert%20consultancy%20regarding%20my%20business.", "_blank");
+    window.open("https://wa.me/9177314545?text=Hello,%20I'm%20looking%20for%20expert%20consultancy%20regarding%20my%20business.", "_blank");
   };
 
   useEffect(() => {

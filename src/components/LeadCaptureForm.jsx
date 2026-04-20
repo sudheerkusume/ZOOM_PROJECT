@@ -64,7 +64,7 @@ const LeadCaptureForm = ({ packageName }) => {
         const encodedMessage = encodeURIComponent(message);
 
         // Open WhatsApp directly
-        const whatsappNumber = "9177509985";
+        const whatsappNumber = "9177314545";
         const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
         window.open(whatsappUrl, '_blank');
