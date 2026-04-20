@@ -15,6 +15,7 @@ import ComplianceSolutionSection from '../components/ComplianceSolutionSection';
 import PartnersLogos from '../components/PartnersLogos';
 import FaqSection from '../components/FaqSection';
 import { ArrowRight, Zap, Star, ShieldCheck, Users } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { useState, useEffect, useRef } from "react";
 import background from '../assets/background.jpg';
 
@@ -90,6 +91,11 @@ const StatCard = ({ label, value, icon: Icon }) => {
 const Home = () => {
   const [visible, setVisible] = useState(false);
   const ref = useRef(null);
+  const navigate = useNavigate();
+
+  const handleExpertClick = () => {
+    window.open("https://wa.me/9177509985?text=Hello,%20I'm%20looking%20for%20expert%20consultancy%20regarding%20my%20business.", "_blank");
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -288,12 +294,18 @@ const Home = () => {
               </p>
               
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
-                <button className="group/btn relative px-6 py-4 md:px-10 md:py-6 bg-white text-[#0B101E] font-black rounded-xl md:rounded-2xl text-base md:text-xl w-full sm:w-auto shadow-[0_0_50px_rgba(255,255,255,0.15)] hover:shadow-[0_0_80px_rgba(255,255,255,0.3)] hover:-translate-y-1 transition-all duration-500 flex items-center justify-center gap-3 border border-white">
+                <button 
+                  onClick={() => navigate('/startup/private-limited')}
+                  className="group/btn relative px-6 py-4 md:px-10 md:py-6 bg-white text-[#0B101E] font-black rounded-xl md:rounded-2xl text-base md:text-xl w-full sm:w-auto shadow-[0_0_50px_rgba(255,255,255,0.15)] hover:shadow-[0_0_80px_rgba(255,255,255,0.3)] hover:-translate-y-1 transition-all duration-500 flex items-center justify-center gap-3 border border-white"
+                >
                   Launch My Startup
                   <ArrowRight className="w-5 h-5 md:w-6 md:h-6 group-hover/btn:translate-x-1.5 transition-transform duration-300" />
                   <div className="absolute inset-0 rounded-xl md:rounded-2xl ring-4 ring-white/10 group-hover/btn:ring-white/30 transition-all duration-500 scale-105 opacity-0 group-hover/btn:opacity-100 group-hover/btn:scale-100"></div>
                 </button>
-                <button className="px-6 py-4 md:px-10 md:py-6 rounded-xl md:rounded-2xl border-2 border-slate-700/50 bg-slate-800/30 text-white font-bold hover:bg-brand-indigo/10 hover:border-brand-indigo/30 transition-all duration-300 text-base md:text-xl w-full sm:w-auto backdrop-blur-md">
+                <button 
+                  onClick={handleExpertClick}
+                  className="px-6 py-4 md:px-10 md:py-6 rounded-xl md:rounded-2xl border-2 border-slate-700/50 bg-slate-800/30 text-white font-bold hover:bg-brand-indigo/10 hover:border-brand-indigo/30 transition-all duration-300 text-base md:text-xl w-full sm:w-auto backdrop-blur-md"
+                >
                   Talk to a CS Expert
                 </button>
               </div>
