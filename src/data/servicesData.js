@@ -220,5 +220,108 @@ export const servicesData = {
       { name: "Proprietorship", slug: "/startup/proprietorship" },
       { name: "Indian Subsidiary", slug: "/startup/indian-subsidiary" }
     ]
+  },
+  "trade-license": {
+    seo: {
+      title: "Trade License Registration Online | ZOO Filings",
+      description: "Apply for Trade License online easily. Get end-to-end assistance for document verification, filing, and compliance with Municipal Corporations."
+    },
+    hero: {
+      title: "Trade License Registration",
+      description: "Register your Trade License at the best prices with a smooth, hassle-free process. We help you start, operate, and grow your business legally with expert guidance from start to finish."
+    },
+    whatsappPackageName: "Trade License",
+    inclusions: [
+      { title: "Document Collection & Verification", icon: "FileText" },
+      { title: "Seamless Application Filing", icon: "CheckCircle2" },
+      { title: "Secure & Compliant", icon: "ShieldCheck" },
+      { title: "End-to-End Assistance", icon: "User" }
+    ],
+    requiredDocuments: [
+      "Duly filled Application Form (Form-353 or state-specific form)",
+      "Identity proof of applicant",
+      "Address proof of business premises",
+      "Property tax receipt",
+      "Rent agreement / Ownership proof",
+      "City census or location map",
+      "Building plan (for hazardous trades)",
+      "Letter of approval / NOC (if applicable)"
+    ],
+    features: [
+      {
+        title: "Legal Compliance",
+        description: "Ensures lawful operation under municipal laws and prevents fines, closures, and legal actions."
+      },
+      {
+        title: "Public Safety & Hygiene",
+        description: "Confirms adherence to health and safety standards, protecting residents from health and environmental risks."
+      },
+      {
+        title: "Business Credibility",
+        description: "Enhances trust among customers and partners, and acts as official proof for banks and investors."
+      },
+      {
+        title: "Facilitates Expansion",
+        description: "Required for business growth, approvals, and accessing certain government subsidies and schemes."
+      }
+    ],
+    pricing: [
+      {
+        name: "Basic Filing",
+        description: "Standard application preparation and online filing with the local authorities.",
+        features: [
+          "Document Verification",
+          "Application Drafting",
+          "Online Submission",
+          "Basic Support"
+        ],
+        isPopular: false
+      },
+      {
+        name: "Premium License",
+        description: "Fast-track processing with dedicated expert coordination.",
+        features: [
+          "Everything in Basic",
+          "Dedicated License Expert",
+          "Follow-up with Authorities",
+          "Priority Processing"
+        ],
+        isPopular: true
+      },
+      {
+        name: "Complete Care",
+        description: "Trade License + Annual compliance monitoring for your business.",
+        features: [
+          "Everything in Premium",
+          "Annual Maintenance",
+          "Renewal Reminders",
+          "Ongoing Consultation"
+        ],
+        isPopular: false
+      }
+    ],
+    faqs: [
+      {
+        question: "What is a Trade License?",
+        answer: "A Trade License is a legal document issued by the Municipal Corporation that authorises an individual or entity to carry out a specific business or trade at a particular location."
+      },
+      {
+        question: "Who Issues a Trade License in India?",
+        answer: "Trade Licenses are issued by the Municipal Corporation or Local Urban Body, through departments such as the Health, Engineering, or Industries Department."
+      },
+      {
+        question: "What businesses require a Trade License?",
+        answer: "Businesses like retail stores, restaurants, factories, healthcare clinics, transport services, and entertainment centres generally require a Trade License."
+      },
+      {
+        question: "What is the penalty for non-compliance?",
+        answer: "Operating without a valid Trade License may lead to monetary fines, legal notices, business closure, or the sealing of premises."
+      }
+    ],
+    relatedServices: [
+      { name: "FSSAI Registration", slug: "/registrations/fssai" },
+      { name: "GST Registration", slug: "/registrations/gst" },
+      { name: "Proprietorship", slug: "/startup/proprietorship" }
+    ]
   }
 };
