@@ -1,7 +1,10 @@
 import React from 'react';
 import { ShieldCheck, FileText, Globe, TrendingUp, Users, ArrowUpRight, Scale } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const BentoGrid = () => {
+  const navigate = useNavigate();
+
   const tiles = [
     {
       title: "Company Registration",
@@ -9,6 +12,7 @@ const BentoGrid = () => {
       icon: <ShieldCheck size={28} />,
       tag: "Most Popular",
       span: "md:col-span-2 md:row-span-2",
+      path: "/startup/private-limited",
       content: (
         <div className="mt-6 md:mt-8 space-y-2 md:space-y-3">
           <div className="flex items-center gap-3 p-3 md:p-4 bg-slate-50 rounded-2xl border border-slate-100">
@@ -27,13 +31,15 @@ const BentoGrid = () => {
       desc: "Hassle-free GST registration and monthly filings with expert CA support.",
       icon: <FileText size={20} />,
       tag: "Essential",
-      span: "md:col-span-2 md:row-span-1"
+      span: "md:col-span-2 md:row-span-1",
+      path: "/gst/gst_registration"
     },
     {
       title: "Trademark Filing",
       desc: "Secure your brand identity with IP protection.",
       icon: <Globe size={20} />,
-      span: "md:col-span-1 md:row-span-1"
+      span: "md:col-span-1 md:row-span-1",
+      path: "/trademark/registration"
     },
     {
       title: "Real-time Metrics",
@@ -46,7 +52,8 @@ const BentoGrid = () => {
       title: "Expert Consulting",
       desc: "Talk to CS/CA experts for complex structures.",
       icon: <Users size={20} />,
-      span: "md:col-span-2 md:row-span-1"
+      span: "md:col-span-2 md:row-span-1",
+      path: "/compliance/bookkeeping"
     }
   ];
 
@@ -55,7 +62,8 @@ const BentoGrid = () => {
       {tiles.map((tile, idx) => (
         <div
           key={idx}
-          className={`relative p-6 md:p-8 bg-white rounded-[2rem] md:rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-brand-indigo/5 transition-all duration-300 group ${tile.span}`}
+          onClick={() => tile.path && navigate(tile.path)}
+          className={`relative p-6 md:p-8 bg-white rounded-[2rem] md:rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-brand-indigo/5 transition-all duration-300 group ${tile.span} ${tile.path ? 'cursor-pointer' : ''}`}
         >
           <div className="flex justify-between items-start mb-5 md:mb-6">
             <div className="w-10 h-10 md:w-12 md:h-12 bg-brand-indigo/5 text-brand-indigo rounded-2xl flex items-center justify-center transition-transform group-hover:scale-110">
