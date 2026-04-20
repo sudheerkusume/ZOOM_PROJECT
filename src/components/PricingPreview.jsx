@@ -1,42 +1,52 @@
 import React from 'react';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
-const PricingCard = ({ title, price, features, highlighted }) => (
-  <div className={`p-4 sm:p-5 md:p-8 rounded-2xl md:rounded-[2.5rem] border h-full flex flex-col transition-all duration-300 ${highlighted ? 'border-brand-indigo bg-brand-indigo/5 shadow-xl shadow-brand-indigo/10' : 'border-slate-100 bg-white hover:border-brand-indigo/30'}`}>
-    <h3 className="text-sm sm:text-base md:text-xl font-black text-brand-slate mb-3 md:mb-6">{title}</h3>
+const PricingCard = ({ title, features, highlighted, path }) => {
+  const navigate = useNavigate();
+  return (
+    <div className={`p-4 sm:p-5 md:p-8 rounded-2xl md:rounded-[2.5rem] border h-full flex flex-col transition-all duration-300 ${highlighted ? 'border-brand-indigo bg-brand-indigo/5 shadow-xl shadow-brand-indigo/10' : 'border-slate-100 bg-white hover:border-brand-indigo/30'}`}>
+      <h3 className="text-sm sm:text-base md:text-xl font-black text-brand-slate mb-3 md:mb-6">{title}</h3>
 
-    <div className="space-y-2.5 md:space-y-4 mb-4 md:mb-8 flex-grow">
-      {features.map((feature, idx) => (
-        <div key={idx} className="flex items-start md:items-center gap-2 md:gap-3">
-          <CheckCircle2 className={`w-3.5 h-3.5 md:w-4 md:h-4 shrink-0 mt-[2px] md:mt-0 ${highlighted ? 'text-brand-indigo' : 'text-emerald-500'}`} />
-          <span className="text-[10px] sm:text-xs md:text-sm font-medium text-slate-600 leading-tight">{feature}</span>
-        </div>
-      ))}
+      <div className="space-y-2.5 md:space-y-4 mb-4 md:mb-8 flex-grow">
+        {features.map((feature, idx) => (
+          <div key={idx} className="flex items-start md:items-center gap-2 md:gap-3">
+            <CheckCircle2 className={`w-3.5 h-3.5 md:w-4 md:h-4 shrink-0 mt-[2px] md:mt-0 ${highlighted ? 'text-brand-indigo' : 'text-emerald-500'}`} />
+            <span className="text-[10px] sm:text-xs md:text-sm font-medium text-slate-600 leading-tight">{feature}</span>
+          </div>
+        ))}
+      </div>
+
+      <button 
+        onClick={() => path && navigate(path)}
+        className={`w-full py-2.5 md:py-4 rounded-xl md:rounded-2xl font-bold flex items-center justify-center gap-1.5 md:gap-2 transition-all text-xs md:text-base ${highlighted ? 'bg-brand-indigo text-white shadow-lg shadow-brand-indigo/20 hover:bg-brand-violet' : 'bg-slate-50 text-brand-slate hover:bg-slate-100'}`}
+      >
+        Select
+        <ArrowRight className="w-3.5 h-3.5 md:w-[18px] md:h-[18px]" />
+      </button>
     </div>
-
-    <button className={`w-full py-2.5 md:py-4 rounded-xl md:rounded-2xl font-bold flex items-center justify-center gap-1.5 md:gap-2 transition-all text-xs md:text-base ${highlighted ? 'bg-brand-indigo text-white shadow-lg shadow-brand-indigo/20 hover:bg-brand-violet' : 'bg-slate-50 text-brand-slate hover:bg-slate-100'}`}>
-      Select
-      <ArrowRight className="w-3.5 h-3.5 md:w-[18px] md:h-[18px]" />
-    </button>
-  </div>
-);
+  );
+};
 
 const PricingPreview = () => {
   const plans = [
     {
       title: "Pvt Ltd Startup",
       features: ["2 DIN & DSC", "Standard MOA/AOA", "PAN & TAN Application", "PF/ESI Registration"],
-      highlighted: true
+      highlighted: true,
+      path: "/startup/private-limited"
     },
     {
       title: "GST Compliance",
       features: ["Monthly Filings", "GSTR-1 & 3B", "Reconciliation Report", "Unlimited Consults"],
-      highlighted: false
+      highlighted: false,
+      path: "/gst/gst_registration"
     },
     {
       title: "Trademark Filing",
       features: ["Brand Name Search", "Filing & Drafting", "MSME Discounts", "Status Tracking"],
-      highlighted: false
+      highlighted: false,
+      path: "/trademark/registration"
     }
   ];
 
